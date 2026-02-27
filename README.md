@@ -64,19 +64,19 @@
 
 ```
 ┌─────────────────────────────────────────────┐
-│  FRONTEND                                    │
+│  FRONTEND                                   │
 │  React 18 · Vite 6 · TailwindCSS 3          │
-│  React Router · Axios · Lucide Icons         │
+│  React Router · Axios · Lucide Icons        │
 ├─────────────────────────────────────────────┤
-│  BACKEND                                     │
-│  Node.js · Express 4 · Mongoose 8            │
-│  JWT · bcrypt · express-validator            │
+│  BACKEND                                    │
+│  Node.js · Express 4 · Mongoose 8           │
+│  JWT · bcrypt · express-validator           │
 ├─────────────────────────────────────────────┤
-│  DATABASE                                    │
-│  MongoDB Atlas · 4 Models · Indexed          │
+│  DATABASE                                   │
+│  MongoDB Atlas · 4 Models · Indexed         │
 ├─────────────────────────────────────────────┤
-│  SECURITY                                    │
-│  Helmet · CORS · Rate Limiting · Validation  │
+│  SECURITY                                   │
+│  Helmet · CORS · Rate Limiting · Validation │
 └─────────────────────────────────────────────┘
 ```
 
@@ -166,15 +166,15 @@ A **3-tier priority system** that personalizes the feed for each user:
 ```
 ┌─────────────────────────────────────────────┐
 │  TIER 1 — Personalized                      │
-│  Products from followed artisans in user's   │
-│  preferred categories                        │
+│  Products from followed artisans in user's  │
+│  preferred categories                       │
 ├─────────────────────────────────────────────┤
 │  TIER 2 — Category-Based                    │
-│  Popular items in categories the user        │
-│  engages with most                           │
+│  Popular items in categories the user       │
+│  engages with most                          │
 ├─────────────────────────────────────────────┤
 │  TIER 3 — Globally Popular                  │
-│  Trending products by views + likes          │
+│  Trending products by views + likes         │
 └─────────────────────────────────────────────┘
 ```
 
@@ -254,33 +254,33 @@ This populates the database with **6 artisans** and **17 handcrafted products** 
 |--------|----------|-------------|------|
 | `POST` | `/api/auth/signup` | Register new user | ✗ |
 | `POST` | `/api/auth/login` | Login & get JWT | ✗ |
-| `GET` | `/api/auth/verify` | Verify JWT token | ✓ |
+| `GET`  | `/api/auth/verify` | Verify JWT token | ✓ |
 
 ### Users
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
-| `GET` | `/api/users/profile` | Get own profile | ✓ |
-| `PUT` | `/api/users/profile` | Update profile | ✓ |
+| `GET`  | `/api/users/profile` | Get own profile | ✓ |
+| `PUT`  | `/api/users/profile` | Update profile | ✓ |
 | `POST` | `/api/users/:id/follow` | Follow artisan | ✓ |
-| `DELETE` | `/api/users/:id/follow` | Unfollow artisan | ✓ |
-| `GET` | `/api/users/artisans` | List all artisans | ✗ |
-| `GET` | `/api/users/:id` | Get user profile | ✗ |
+| `DELETE`| `/api/users/:id/follow` | Unfollow artisan | ✓ |
+| `GET`  | `/api/users/artisans` | List all artisans | ✗ |
+| `GET`  | `/api/users/:id` | Get user profile | ✗ |
 
 ### Products
-| Method | Endpoint | Description | Auth |
-|--------|----------|-------------|------|
-| `GET` | `/api/products` | List products | ✗ |
-| `GET` | `/api/products/:id` | Get product detail | ✗ |
-| `POST` | `/api/products` | Create product | ✓ |
-| `PUT` | `/api/products/:id` | Update product | ✓ |
-| `DELETE` | `/api/products/:id` | Delete product | ✓ |
-| `POST` | `/api/products/:id/like` | Like/unlike product | ✓ |
+| Method |       Endpoint           | Description         | Auth |
+|--------|--------------------------|---------------------|------|
+| `GET`  | `/api/products`          | List products       |  ✗   |
+| `GET`  | `/api/products/:id`      | Get product detail  |  ✗   |
+| `POST` | `/api/products`          | Create product      |  ✓   |
+| `PUT`  | `/api/products/:id`      | Update product      |  ✓   |
+| `DELETE`| `/api/products/:id`     | Delete product      |  ✓   |
+| `POST` | `/api/products/:id/like` | Like/unlike product |  ✓   |
 
 ### Recommendations
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
-| `GET` | `/api/recommendations/crafts` | Recommended crafts | ○ |
-| `GET` | `/api/recommendations/artisans` | Recommended artisans | ○ |
+| `GET`  | `/api/recommendations/crafts` | Recommended crafts | ○ |
+| `GET`  | `/api/recommendations/artisans` | Recommended artisans | ○ |
 
 > ✓ = Required · ✗ = Not required · ○ = Optional (enhances personalization)
 
@@ -288,18 +288,18 @@ This populates the database with **6 artisans** and **17 handcrafted products** 
 
 ## ✦ Security
 
-| Layer | Implementation |
-|-------|---------------|
-| **Authentication** | JWT with 7-day expiry |
-| **Password Storage** | bcrypt with 12 salt rounds |
-| **API Protection** | Rate limiting (100 req/15min) |
-| **Auth Throttling** | Stricter rate limit (20 req/15min) |
-| **Headers** | Helmet.js security headers |
-| **CORS** | Origin whitelist (client URL only) |
+| Layer                | Implementation                     |
+|----------------------|------------------------------------|
+| **Authentication**   | JWT with 7-day expiry              |
+| **Password Storage** | bcrypt with 12 salt rounds         |
+| **API Protection**   | Rate limiting (100 req/15min)      |
+| **Auth Throttling**  | Stricter rate limit (20 req/15min) |
+| **Headers**          | Helmet.js security headers         |
+| **CORS**             | Origin whitelist (client URL only) |
 | **Input Validation** | express-validator on all endpoints |
-| **Error Handling** | No stack traces in production |
-| **Data Sanitization** | Password stripped from all responses |
-| **Ownership** | Products editable only by creator |
+| **Error Handling**   | No stack traces in production      |
+| **Data Sanitization**| Password stripped from all responses |
+| **Ownership**        | Products editable only by creator  |
 
 ---
 
@@ -357,30 +357,30 @@ erDiagram
 
 ## ✦ Product Categories
 
-| Category | Icon | Examples |
-|----------|------|----------|
-| Pottery | 🏺 | Ceramic bowls, terracotta planters, raku tea cups |
-| Textiles | 🧵 | Block print scarves, silk runners, embroidered covers |
-| Woodwork | 🪵 | Serving boards, desk organizers, carved wall art |
-| Jewelry | 💎 | Silver cuffs, moonstone earrings, pendant necklaces |
-| Painting | 🎨 | Abstract landscapes, botanical illustrations |
-| Glasswork | 🫧 | Blown glass vases, pendant lights |
-| Sculpture | 🗿 | Coming soon |
-| Metalwork | ⚒️ | Coming soon |
-| Leatherwork | 🧳 | Coming soon |
+| Category  | Icon | Examples                                              |
+|-----------|------|-------------------------------------------------------|
+| Pottery   | 🏺   | Ceramic bowls, terracotta planters, raku tea cups     |
+| Textiles  | 🧵   | Block print scarves, silk runners, embroidered covers |
+| Woodwork  | 🪵   | Serving boards, desk organizers, carved wall art      |
+| Jewelry   | 💎   | Silver cuffs, moonstone earrings, pendant necklaces   |
+| Painting  | 🎨   | Abstract landscapes, botanical illustrations          |
+| Glasswork | 🫧   | Blown glass vases, pendant lights                     |
+| Sculpture | 🗿   | Coming soon                                           |
+| Metalwork | ⚒️   | Coming soon                                           |
+| Leatherwork | 🧳 | Coming soon                                           |
 
 ---
 
 ## ✦ Design System
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| **Font** | Cormorant Garamond (serif) | Headings, brand |
-| **Font** | Inter (sans-serif) | Body text, UI |
-| **Gold** | `#C4963A` | CTAs, prices, accents |
-| **Charcoal** | `#1A1A1A` | Text, dark elements |
-| **Cream** | `#FAF7F2` | Backgrounds |
-| **Border** | `#EDE8E0` | Card borders, dividers |
+| Token    | Value                      | Usage                  |
+|----------|----------------------------|------------------------|
+| **Font** | Cormorant Garamond (serif) | Headings, brand        |
+| **Font** | Inter (sans-serif)         | Body text, UI          |
+| **Gold** | `#C4963A`                  | CTAs, prices, accents  |
+| **Charcoal** | `#1A1A1A`              | Text, dark elements    |
+| **Cream**    | `#FAF7F2`              | Backgrounds            |
+| **Border**   | `#EDE8E0`              | Card borders, dividers |
 
 ---
 
@@ -424,3 +424,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
   <br>
   Built with ♥ by <a href="https://github.com/Sadiq-Kolakar">Sadiq Kolakar</a>
 </p>
+
