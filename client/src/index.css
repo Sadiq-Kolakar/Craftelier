@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Agraham font declaration — using Cormorant Garamond as a premium serif stand-in */
+@font-face {
+  font-family: 'Agraham';
+  src: local('Cormorant Garamond');
+  font-display: swap;
+}
+
+:root {
+  --color-cream: #FEFDFB;
+  --color-cream-warm: #FDF9F0;
+  --color-charcoal: #1A1A1A;
+  --color-gold: #C4963A;
+  --color-gold-light: #D4A853;
+  --color-sage: #6B8F68;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Agraham', 'Cormorant Garamond', Georgia, serif, system-ui;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Agraham', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Utility classes */
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 bg-charcoal-800 text-cream-50 font-medium tracking-wide
+           hover:bg-charcoal-900 transition-all duration-300 ease-out;
+  }
+  .btn-outline {
+    @apply px-8 py-3 border border-charcoal-800 text-charcoal-800 font-medium tracking-wide
+           hover:bg-charcoal-800 hover:text-cream-50 transition-all duration-300 ease-out;
+  }
+  .btn-gold {
+    @apply px-8 py-3 bg-gold-500 text-white font-medium tracking-wide
+           hover:bg-gold-600 transition-all duration-300 ease-out;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-cream-50 border border-cream-300 text-charcoal-800
+           placeholder-gray-400 focus:outline-none focus:border-gold-500
+           transition-colors duration-200;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-medium text-charcoal-800 tracking-tight;
+  }
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1;
+  }
+}
+
+/* Page transitions */
+.page-enter {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
